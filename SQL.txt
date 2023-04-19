@@ -1,0 +1,87 @@
+CREATE TABLE EMAIL
+	(ID LONG PRIMARY KEY, 
+	PRIMATELJI VARCHAR(255), 
+	VRIJEME_SLANJA VARCHAR(255), 
+	NASLOV VARCHAR(255), 
+	TIJELO VARCHAR(2000));
+	
+CREATE TABLE KORISNIK
+	(MAIL_ADRESA VARCHAR(255) PRIMARY KEY,
+	IME VARCHAR(255), 
+	PREZIME VARCHAR(255), 
+	DATUM_RODENJA VARCHAR(255), 
+	SPOL VARCHAR(15),
+	BROJ_MOBITELA VARCHAR(20), 
+	LOZINKA VARCHAR(255));
+	
+CREATE TABLE RACUN
+	(KORISNIK VARCHAR(255) PRIMARY KEY, 
+	POSLANI_EMAILOVI VARCHAR(1000), 
+	PRIMLJENI_EMAILOVI VARCHAR(1000),
+	EMAILOVI_S_ZVJEZDICOM VARCHAR(1000));
+	
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('dario.kenfelja', 'Dario', 'Kenfelja', '1999.11.11', 'M', '', 'kenfeljaLoz123');	
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('marko.markovic', 'Marko', 'Markovic', '1989.09.03', 'M', '0955538735', 'lozinkaOdMarka');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('ana.anic', 'Ana', 'Anić', '1996.08.17', 'F', '0987654321', 'lozinka123');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('ivan.ivkovic', 'Ivan', 'Ivković', '1990.12.23', 'M', '', 'ivankovaLozinka');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('marija.maric', 'Marija', 'Marić', '1985.06.02', 'N', '0923456789', 'marijinaTajna');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('petar.peric', 'Petar', 'Perić', '1993.02.14', 'M', '0998765432', 'pericevaSifra');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('maja.majic', 'Maja', 'Majić', '1988.11.29', 'F', '', 'majinaLozinka123');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('ante.antic', 'Ante', 'Antić', '1995.04.20', 'M', '', 'antinaTajna');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('ana.bakic', 'Ana', 'Bakić', '1991.01.05', 'F', '0976543210', 'ana123');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('marko.juric', 'Marko', 'Jurić', '1987.09.18', 'M', '', 'juricevaLozinka');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('ivana.ivancic', 'Ivana', 'Ivancić', '1994.07.26', 'F', '0987654321', 'Ivan123');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('domagoj.kovac', 'Domagoj', 'Kovač', '1992.05.11','N', '', 'kovacevaLozinka');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('filip.filipovic', 'Filip', 'Filipović', '1998.02.19', 'M', '0953842947', 'filipFilip123');
+INSERT INTO KORISNIK(mail_adresa, ime, prezime, datum_rodenja, spol, broj_mobitela, lozinka) VALUES('marija.stjepanovic', 'Marija', 'Stjepanović', '1993.06.23', 'F', '', 'marijaS123');
+
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('dario.kenfelja', '1 2 3', '4 5 6', '5');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('marko.markovic', '4 5 6', '1 2 3', '5');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('ana.anic', '7 8', '9 10 11', '11 10');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('ivan.ivkovic', '9 10 11', '7 8', '7 8');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('marija.maric', '12 13 14 15', '16 17', '');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('petar.peric', '16 17', '12 13 14 15', '');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('maja.majic', '', '18 19 20', '18');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('ante.antic', '18 19 20', '', '19');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('ana.bakic', '21 22', '23 24', '24 23');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('marko.juric', '23 24', '21 22', '21 22');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('ivana.ivancic', '25 26', '27 28 29 30', '');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('domagoj.kovac', '27 28 29 30', '25 26', '27 25');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('filip.filipovic', '31 32', '33 34', '');
+INSERT INTO RACUN(korisnik, poslani_emailovi, primljeni_emailovi, emailovi_s_zvjezdicom) VALUES('marija.stjepanovic', '33 34', '31 32', '');
+
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('1', 'marko.markovic', '2021.11.01 13:36', 'Naslov mojeg maila', 'Bok saljem ti svoj prvi mail!');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('2', 'marko.markovic', '2021.02.12 09:15', 'Poziv na sastanak', 'Bok, šaljem ti poziv na sastanak koji smo planirali.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('3', 'marko.markovic', '2021.06.25 14:30', 'Potvrda rezervacije', 'Pozdrav, potvrđujemo tvoju rezervaciju za sljedeći vikend.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('4', 'dario.kenfelja', '2021.11.11 20:45', 'Izvještaj o poslovanju', 'Poštovani, u prilogu šaljem izvještaj o poslovanju za ovaj kvartal.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('5', 'dario.kenfelja', '2021.12.15 16:20', 'Novi proizvod', 'Bok, predstavljam ti naš novi proizvod koji će uskoro biti dostupan na tržištu.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('6', 'dario.kenfelja', '2022.01.04 11:00', 'Obavijest o radnom vremenu', 'Pozdrav, ovim putem te obavještavamo o promjenama u radnom vremenu.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('7', 'ivan.ivkovic', '2022.03.18 13:45', 'Ponuda za suradnju', 'Poštovani, željeli bismo vam ponuditi suradnju na novom projektu.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('8', 'ivan.ivkovic', '2022.04.05 09:10', 'Upit za informacije', 'Bok, molim te da mi dostaviš dodatne informacije vezane uz tvoj proizvod.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('9', 'ana.anic', '2022.05.12 15:30', 'Odgovor na upit', 'Pozdrav, u prilogu šaljem tražene informacije.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('10', 'ana.anic', '2022.06.21 11:20', 'Obavijest o plaćanju', 'Poštovani, podsjećamo vas na obavezu plaćanja računa za ovaj mjesec.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('11', 'ana.anic', '2022.07.29 17:40', 'Plan rada za sljedeći tjedan', 'Pozdrav, šaljem vam plan rada za sljedeći tjedan kako biste bili informirani o aktivnostima.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('12', 'petar.peric', '2022.08.18 10:15', 'Ponuda za prodaju', 'Poštovani, željeli bismo vam ponuditi naše proizvode na prodaju po posebnoj cijeni.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('13', 'petar.peric', '2022.09.09 12:30', 'Odgovor na žalbu', 'Bok, u prilogu šaljem odgovor na vašu žalbu.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('14', 'petar.peric', '2022.10.27 14:50', 'Novosti o proizvodu', 'Pozdrav, želimo vas obavijestiti o novostima vezanim uz naš proizvod.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('15', 'petar.peric', '2022.11.15 16:20', 'Obavijest o odgodama', 'Poštovani, ovim putem vas obavještavamo o odgodama u isporuci.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('16', 'marija.maric', '2022.12.02 11:05', 'Poziv na događaj', 'Bok, pozivamo vas na naš sljedeći događaj koji će se održati ovaj mjesec.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('17', 'marija.maric', '2023.01.09 09:00', 'Obavijest o otkazivanju', 'Poštovani, obavještavamo vas o otkazivanju događaja koji se trebao održati sljedeći tjedan.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('18', 'maja.majic', '2023.02.07 15:35', 'Odgovor na reklamaciju', 'Bok, u prilogu šaljem odgovor na vašu reklamaciju i rješenje problema.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('19', 'maja.majic', '2023.03.11 10:50', 'Ponuda za usluge', 'Poštovani, željeli bismo vam ponuditi naše usluge po povoljnim cijenama.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('20', 'maja.majic', '2023.04.12 08:15', 'Izvještaj o projektu', 'Pozdrav, šaljem vam izvještaj o projektu koji smo nedavno završili.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('21', 'marko.juric', '2023.05.22 13:20', 'Upit za suradnju', 'Poštovani, zanima nas mogućnost suradnje s vašom tvrtkom i željeli bismo dobiti više informacija o tome.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('22', 'marko.juric', '2023.06.19 11:40', 'Ponuda za održavanje', 'Bok, nudimo vam usluge održavanja vaših uređaja po povoljnim cijenama.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('23', 'ana.bakic', '2023.07.17 09:25', 'Obavijest o promjeni cijena', 'Poštovani, obavještavamo vas o promjeni cijena naših proizvoda i usluga.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('24', 'ana.bakic', '2023.08.14 14:55', 'Zahvala na suradnji', 'Pozdrav, zahvaljujemo vam na uspješnoj suradnji i nadamo se budućoj suradnji.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('25', 'domagoj.kovac', '2023.09.21 16:10', 'Poziv na predavanje', 'Bok, pozivamo vas na predavanje koje će se održati sljedeći mjesec.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('26', 'domagoj.kovac', '2023.10.30 12:45', 'Odgovor na upit', 'Poštovani, u prilogu šaljemo odgovor na vaš upit o našim proizvodima i uslugama.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('27', 'ivana.ivancic', '2023.11.27 10:30', 'Obavijest o popustima', 'Pozdrav, željeli bismo vas obavijestiti o popustima naše tvrtke za nadolazeće blagdane.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('28', 'ivana.ivancic', '2023.12.19 14:20', 'Poziv na božićni domjenak', 'Bok, pozivamo vas na naš tradicionalni božićni domjenak koji će se održati ovaj tjedan!');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('29', 'ivana.ivancic', '2024.01.15 09:55', 'Najava novog proizvoda', 'Poštovani, uskoro ćemo predstaviti naš novi proizvod i željeli bismo vas pozvati da nam se pridružite na predstavljanju.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('30', 'ivana.ivancic', '2024.02.22 15:10', 'Obavijest o promjeni radnog vremena', 'Pozdrav, obavještavamo vas o promjeni radnog vremena naše tvrtke od sljedećeg tjedna.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('31', 'marija.stjepanovic', '2024.03.18 11:35', 'Poziv na konferenciju', 'Bok, pozivamo vas na konferenciju koja će se održati sljedeći mjesec.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('32', 'marija.stjepanovic', '2024.04.23 16:25', 'Potvrda narudžbe', 'Poštovani, u prilogu vam šaljemo potvrdu o vašoj narudžbi.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('33', 'filip.filipovic', '2024.05.21 10:15', 'Ponuda za izradu web stranice', 'Bok, nudimo vam usluge izrade web stranica po vrlo povoljnim cijenama.');
+INSERT INTO EMAIL(id, primatelji, vrijeme_slanja, naslov, tijelo) VALUES('34', 'filip.filipovic', '2024.06.16 13:45', 'Zahvala na suradnji', 'Poštovani, zahvaljujemo vam na uspješnoj suradnji i nadamo se budućoj suradnji.');
+

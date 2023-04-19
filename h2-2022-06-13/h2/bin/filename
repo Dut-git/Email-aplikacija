@@ -1,0 +1,100 @@
+-- H2 2.1.214;
+;             
+CREATE USER IF NOT EXISTS "PROJEKT" SALT '60183bf8ed75eb9b' HASH 'd654121a04b2f24c3d0f4cc12d7789c530ca3071b6145db559a9b325c528441f' ADMIN;    
+CREATE CACHED TABLE "PUBLIC"."RACUN"(
+    "KORISNIK" CHARACTER VARYING(255) NOT NULL,
+    "POSLANI_EMAILOVI" CHARACTER VARYING(1000),
+    "PRIMLJENI_EMAILOVI" CHARACTER VARYING(1000),
+    "EMAILOVI_S_ZVJEZDICOM" CHARACTER VARYING(1000)
+);           
+ALTER TABLE "PUBLIC"."RACUN" ADD CONSTRAINT "PUBLIC"."CONSTRAINT_4" PRIMARY KEY("KORISNIK");  
+-- 14 +/- SELECT COUNT(*) FROM PUBLIC.RACUN;  
+INSERT INTO "PUBLIC"."RACUN" VALUES
+('marko.markovic', '4 5 6', '1 2 3', '5'),
+('ana.anic', '7 8', '9 10 11', '11 10'),
+('ivan.ivkovic', '9 10 11', '7 8', '7 8'),
+('marija.maric', '12 13 14 15', '16 17', ''),
+('petar.peric', '16 17', '12 13 14 15', ''),
+('maja.majic', '', '18 19 20', '18'),
+('ana.bakic', '21 22', '23 24', '24 23'),
+('marko.juric', '23 24', '21 22', '21 22'),
+('ivana.ivancic', '25 26', '27 28 29 30', ''),
+('domagoj.kovac', '27 28 29 30', '25 26', '27 25'),
+('filip.filipovic', '31 32', '33 34 23', ''),
+('marija.stjepanovic', '33 34', '31 32', ''),
+('ante.antic', '18 19 20', '3', '19'),
+('dario.kenfelja', '1 2 3', '4 5 6', '5 3 4');  
+CREATE CACHED TABLE "PUBLIC"."EMAIL"(
+    "ID" BIGINT NOT NULL,
+    "PRIMATELJI" CHARACTER VARYING(255),
+    "VRIJEME_SLANJA" CHARACTER VARYING(255),
+    "NASLOV" CHARACTER VARYING(255),
+    "TIJELO" CHARACTER VARYING(2000)
+);      
+ALTER TABLE "PUBLIC"."EMAIL" ADD CONSTRAINT "PUBLIC"."CONSTRAINT_3" PRIMARY KEY("ID");        
+-- 35 +/- SELECT COUNT(*) FROM PUBLIC.EMAIL;  
+INSERT INTO "PUBLIC"."EMAIL" VALUES
+(1, 'marko.markovic', '2021.11.01 13:36', 'Naslov mojeg maila', 'Bok saljem ti svoj prvi mail!'),
+(2, 'marko.markovic', '2021.02.12 09:15', 'Poziv na sastanak', U&'Bok, \0161aljem ti poziv na sastanak koji smo planirali.'),
+(3, 'marko.markovic ana.bakic ante.antic', '2021.06.25 14:30', 'Potvrda rezervacije', U&'Pozdrav, potvr\0111ujemo tvoju rezervaciju za sljede\0107i vikend.'),
+(4, 'dario.kenfelja', '2021.11.11 20:45', U&'Izvje\0161taj o poslovanju', U&'Po\0161tovani, u prilogu \0161aljem izvje\0161taj o poslovanju za ovaj kvartal.'),
+(5, 'dario.kenfelja', '2021.12.15 16:20', 'Novi proizvod', U&'Bok, predstavljam ti na\0161 novi proizvod koji \0107e uskoro biti dostupan na tr\017ei\0161tu.'),
+(6, 'dario.kenfelja', '2022.01.04 11:00', 'Obavijest o radnom vremenu', U&'Pozdrav, ovim putem te obavje\0161tavamo o promjenama u radnom vremenu.'),
+(7, 'ivan.ivkovic', '2022.03.18 13:45', 'Ponuda za suradnju', U&'Po\0161tovani, \017eeljeli bismo vam ponuditi suradnju na novom projektu.'),
+(8, 'ivan.ivkovic', '2022.04.05 09:10', 'Upit za informacije', U&'Bok, molim te da mi dostavi\0161 dodatne informacije vezane uz tvoj proizvod.'),
+(9, 'ana.anic', '2022.05.12 15:30', 'Odgovor na upit', U&'Pozdrav, u prilogu \0161aljem tra\017eene informacije.'),
+(10, 'ana.anic', '2022.06.21 11:20', U&'Obavijest o pla\0107anju', U&'Po\0161tovani, podsje\0107amo vas na obavezu pla\0107anja ra\010duna za ovaj mjesec.'),
+(11, 'ana.anic', '2022.07.29 17:40', U&'Plan rada za sljede\0107i tjedan', U&'Pozdrav, \0161aljem vam plan rada za sljede\0107i tjedan kako biste bili informirani o aktivnostima.'),
+(12, 'petar.peric', '2022.08.18 10:15', 'Ponuda za prodaju', U&'Po\0161tovani, \017eeljeli bismo vam ponuditi na\0161e proizvode na prodaju po posebnoj cijeni.'),
+(13, 'petar.peric', '2022.09.09 12:30', U&'Odgovor na \017ealbu', U&'Bok, u prilogu \0161aljem odgovor na va\0161u \017ealbu.'),
+(14, 'petar.peric', '2022.10.27 14:50', 'Novosti o proizvodu', U&'Pozdrav, \017eelimo vas obavijestiti o novostima vezanim uz na\0161 proizvod.'),
+(15, 'petar.peric', '2022.11.15 16:20', 'Obavijest o odgodama', U&'Po\0161tovani, ovim putem vas obavje\0161tavamo o odgodama u isporuci.'),
+(16, 'marija.maric', '2022.12.02 11:05', U&'Poziv na doga\0111aj', U&'Bok, pozivamo vas na na\0161 sljede\0107i doga\0111aj koji \0107e se odr\017eati ovaj mjesec.'),
+(17, 'marija.maric', '2023.01.09 09:00', 'Obavijest o otkazivanju', U&'Po\0161tovani, obavje\0161tavamo vas o otkazivanju doga\0111aja koji se trebao odr\017eati sljede\0107i tjedan.'),
+(18, 'maja.majic', '2023.02.07 15:35', 'Odgovor na reklamaciju', U&'Bok, u prilogu \0161aljem odgovor na va\0161u reklamaciju i rje\0161enje problema.'),
+(19, 'maja.majic', '2023.03.11 10:50', 'Ponuda za usluge', U&'Po\0161tovani, \017eeljeli bismo vam ponuditi na\0161e usluge po povoljnim cijenama.'),
+(20, 'maja.majic', '2023.04.12 08:15', U&'Izvje\0161taj o projektu', U&'Pozdrav, \0161aljem vam izvje\0161taj o projektu koji smo nedavno zavr\0161ili.'),
+(21, 'marko.juric ivo.martinic', '2023.05.22 13:20', 'Upit za suradnju', U&'Po\0161tovani, zanima nas mogu\0107nost suradnje s va\0161om tvrtkom i \017eeljeli bismo dobiti vi\0161e informacija o tome.'),
+(22, 'marko.juric', '2023.06.19 11:40', U&'Ponuda za odr\017eavanje', U&'Bok, nudimo vam usluge odr\017eavanja va\0161ih ure\0111aja po povoljnim cijenama.'),
+(23, 'ana.bakic filip.filipovic', '2023.07.17 09:25', 'Obavijest o promjeni cijena', U&'Po\0161tovani, obavje\0161tavamo vas o promjeni cijena na\0161ih proizvoda i usluga.'),
+(24, 'ana.bakic', '2023.08.14 14:55', 'Zahvala na suradnji', U&'Pozdrav, zahvaljujemo vam na uspje\0161noj suradnji i nadamo se budu\0107oj suradnji.'),
+(25, 'domagoj.kovac', '2023.09.21 16:10', 'Poziv na predavanje', U&'Bok, pozivamo vas na predavanje koje \0107e se odr\017eati sljede\0107i mjesec.'),
+(26, 'domagoj.kovac', '2023.10.30 12:45', 'Odgovor na upit', U&'Po\0161tovani, u prilogu \0161aljemo odgovor na va\0161 upit o na\0161im proizvodima i uslugama.'),
+(27, 'ivana.ivancic', '2023.11.27 10:30', 'Obavijest o popustima', U&'Pozdrav, \017eeljeli bismo vas obavijestiti o popustima na\0161e tvrtke za nadolaze\0107e blagdane.');     
+INSERT INTO "PUBLIC"."EMAIL" VALUES
+(28, 'ivana.ivancic', '2023.12.19 14:20', U&'Poziv na bo\017ei\0107ni domjenak', U&'Bok, pozivamo vas na na\0161 tradicionalni bo\017ei\0107ni domjenak koji \0107e se odr\017eati ovaj tjedan!'),
+(29, 'ivana.ivancic', '2024.01.15 09:55', 'Najava novog proizvoda', U&'Po\0161tovani, uskoro \0107emo predstaviti na\0161 novi proizvod i \017eeljeli bismo vas pozvati da nam se pridru\017eite na predstavljanju.'),
+(30, 'ivana.ivancic', '2024.02.22 15:10', 'Obavijest o promjeni radnog vremena', U&'Pozdrav, obavje\0161tavamo vas o promjeni radnog vremena na\0161e tvrtke od sljede\0107eg tjedna.'),
+(31, 'marija.stjepanovic', '2024.03.18 11:35', 'Poziv na konferenciju', U&'Bok, pozivamo vas na konferenciju koja \0107e se odr\017eati sljede\0107i mjesec.'),
+(32, 'marija.stjepanovic', '2024.04.23 16:25', U&'Potvrda narud\017ebe', U&'Po\0161tovani, u prilogu vam \0161aljemo potvrdu o va\0161oj narud\017ebi.'),
+(33, 'filip.filipovic', '2024.05.21 10:15', 'Ponuda za izradu web stranice', 'Bok, nudimo vam usluge izrade web stranica po vrlo povoljnim cijenama.'),
+(34, 'filip.filipovic', '2024.06.16 13:45', 'Zahvala na suradnji', U&'Po\0161tovani, zahvaljujemo vam na uspje\0161noj suradnji i nadamo se budu\0107oj suradnji.'),
+(35, 'marija.stjepanovic domagoj.kovac', '2023.02.14 23:43', 'Naslov novog emaila', 'Bok ovo je moj novi email koji sam kreirao.');     
+CREATE CACHED TABLE "PUBLIC"."KORISNIK"(
+    "MAIL_ADRESA" CHARACTER VARYING(255) NOT NULL,
+    "IME" CHARACTER VARYING(255),
+    "PREZIME" CHARACTER VARYING(255),
+    "DATUM_RODENJA" CHARACTER VARYING(255),
+    "SPOL" CHARACTER VARYING(15),
+    "BROJ_MOBITELA" CHARACTER VARYING(20),
+    "LOZINKA" CHARACTER VARYING(255)
+);  
+ALTER TABLE "PUBLIC"."KORISNIK" ADD CONSTRAINT "PUBLIC"."CONSTRAINT_5" PRIMARY KEY("MAIL_ADRESA");            
+-- 16 +/- SELECT COUNT(*) FROM PUBLIC.KORISNIK;               
+INSERT INTO "PUBLIC"."KORISNIK" VALUES
+('marko.markovic', 'Marko', 'Markovic', '1989.09.03', 'M', '0955538735', 'lozinkaOdMarka'),
+('ana.anic', 'Ana', U&'Ani\0107', '1996.08.17', 'F', '0987654321', 'lozinka123'),
+('ivan.ivkovic', 'Ivan', U&'Ivkovi\0107', '1990.12.23', 'M', '', 'ivankovaLozinka'),
+('marija.maric', 'Marija', U&'Mari\0107', '1985.06.02', 'N', '0923456789', 'marijinaTajna'),
+('petar.peric', 'Petar', U&'Peri\0107', '1993.02.14', 'M', '0998765432', 'pericevaSifra'),
+('maja.majic', 'Maja', U&'Maji\0107', '1988.11.29', 'F', '', 'majinaLozinka123'),
+('ante.antic', 'Ante', U&'Anti\0107', '1995.04.20', 'M', '', 'antinaTajna'),
+('ana.bakic', 'Ana', U&'Baki\0107', '1991.01.05', 'F', '0976543210', 'ana123'),
+('marko.juric', 'Marko', U&'Juri\0107', '1987.09.18', 'M', '', 'juricevaLozinka'),
+('ivana.ivancic', 'Ivana', U&'Ivanci\0107', '1994.07.26', 'F', '0987654321', 'Ivan123'),
+('domagoj.kovac', 'Domagoj', U&'Kova\010d', '1992.05.11', 'N', '', 'kovacevaLozinka'),
+('filip.filipovic', 'Filip', U&'Filipovi\0107', '1998.02.19', 'M', '0953842947', 'filipFilip123'),
+('marija.stjepanovic', 'Marija', U&'Stjepanovi\0107', '1993.06.23', 'F', '', 'marijaS123'),
+('dario.kenfelja', 'Dario', 'Kenfelja', '1999.11.11', 'M', '', 'kenfeljaLoz123'),
+('ivo.martinic', 'Ivo', U&'Martini\0107', '2001.02.01', 'M', '', 'martinicIvo321'),
+('marko.kovac', 'Marko', 'Kovac', '2003.02.22', 'M', '0955554990', 'lozinka321');    

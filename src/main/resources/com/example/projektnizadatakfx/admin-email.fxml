@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<?import tornadofx.control.DateTimePicker?>
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projektnizadatakfx.AdminEmailController">
+    <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    </columnConstraints>
+    <rowConstraints>
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="136.0" minHeight="10.0" prefHeight="136.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="202.0" minHeight="10.0" prefHeight="186.0" vgrow="SOMETIMES" />
+        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    </rowConstraints>
+    <children>
+        <MenuBar GridPane.columnSpan="2" GridPane.valignment="TOP">
+            <menus>
+                <Menu mnemonicParsing="false" text="Racun">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#prikaziRacun" text="Prikazi" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Email">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#prikaziEmail" text="Prikazi" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Korisnik">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#prikaziKorisnik" text="Prikazi" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Logout">
+                    <items>
+                        <MenuItem mnemonicParsing="false" onAction="#prikaziLoginScreen" text="Confirm" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <Label text="Pregled emaila" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+            <GridPane.margin>
+                <Insets bottom="15.0" />
+            </GridPane.margin>
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Label>
+        <TableView fx:id="emailoviTV" prefHeight="200.0" prefWidth="200.0" GridPane.columnSpan="2" GridPane.rowIndex="2" GridPane.rowSpan="2">
+            <columns>
+                <TableColumn fx:id="idTC" prefWidth="47.0" text="ID" />
+                <TableColumn fx:id="primateljiTC" prefWidth="124.0" text="PRIMATELJI" />
+                <TableColumn fx:id="datumIVrijemeTC" prefWidth="114.0" text="VRIJEME SLANJA" />
+                <TableColumn fx:id="naslovTC" prefWidth="137.0" text="NASLOV" />
+            <TableColumn fx:id="tijeloTC" prefWidth="277.0" text="TIJELO" />
+            </columns>
+        </TableView>
+        <Label text="ID:" GridPane.valignment="BOTTOM">
+            <GridPane.margin>
+                <Insets left="85.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="Primatelji:" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+            <GridPane.margin>
+                <Insets right="64.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="Naslov:" GridPane.columnIndex="1" GridPane.valignment="BOTTOM">
+            <GridPane.margin>
+                <Insets left="70.0" />
+            </GridPane.margin>
+        </Label>
+        <Label text="Tijelo:" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+            <GridPane.margin>
+                <Insets right="77.0" />
+            </GridPane.margin>
+        </Label>
+        <TextField fx:id="idTF" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <GridPane.margin>
+                <Insets left="30.0" right="200.0" />
+            </GridPane.margin>
+        </TextField>
+        <TextField fx:id="naslovTF" layoutX="40.0" layoutY="141.0" GridPane.columnIndex="1" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <GridPane.margin>
+                <Insets left="29.0" right="200.0" />
+            </GridPane.margin>
+        </TextField>
+        <TextField fx:id="primateljiTF" layoutX="395.0" layoutY="141.0" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <GridPane.margin>
+                <Insets left="200.0" right="29.0" />
+            </GridPane.margin>
+        </TextField>
+        <TextField fx:id="tijeloTF" layoutX="395.0" layoutY="141.0" GridPane.columnIndex="1" GridPane.halignment="RIGHT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+            <GridPane.margin>
+                <Insets left="200.0" right="35.0" />
+            </GridPane.margin>
+        </TextField>
+        <Button mnemonicParsing="false" onAction="#dohvatiEmailove" text="Pretrazi" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+            <GridPane.margin>
+                <Insets bottom="20.0" />
+            </GridPane.margin>
+        </Button>
+        <Button mnemonicParsing="false" onAction="#obrisiEmail" text="Obrisi" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="BOTTOM">
+            <GridPane.margin>
+                <Insets bottom="20.0" />
+            </GridPane.margin>
+        </Button>
+      <Label text="Datum i vrijeme:" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets bottom="30.0" />
+         </GridPane.margin>
+      </Label>
+        <DateTimePicker fx:id="datumIVrijemeDTP" GridPane.halignment="CENTER" GridPane.rowIndex="1" prefWidth="145.0">
+            <GridPane.margin>
+                <Insets top="15.0" />
+            </GridPane.margin>
+        </DateTimePicker>
+    </children>
+</GridPane>
